@@ -13,19 +13,21 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-$w(gt)qy@*o-y+%p=m)!ee!@%my9k%8)75)t@@=*5^+h$(crhg'
+SECRET_KEY = 'django-insecure-g145jc!%j4!c36mtxp9r*sriadiirav)0ws()pz%5f%uc=yfa!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['13.209.191.75']
+# ALLOWED_HOSTS = ['13.209.191.75']
+ALLOWED_HOSTS = []
+
 
 # Application definition
 
@@ -110,13 +112,17 @@ TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 
-USE_TZ = True
+# USE_TZ가 True일 때 TIME_ZONE에 설정한 시간이 
+# 템플릿과 폼에만 적용되기 때문에 
+# models에 적용되지 않아 UTC 시간으로 저장됨
+# 그래서 USE_TZ를 False로 변경해줘야 함
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
@@ -126,6 +132,6 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# 로그인, 로그아웃 성공했을 때 자동으로 이동할 URL 설정
+#로그인, 로그아웃 성공 했을 때 자동으로 이동할 URL 설정
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
